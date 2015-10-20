@@ -1,0 +1,22 @@
+
+.logo{
+	position: relative;
+	border: 1px gray solid;
+	border-radius: 3px;
+	color: gray;
+	display: block;
+	font-size: 20px;
+	height: 200px;
+	max-height: 200px;
+	width: 200px;
+	max-width: 200px;
+}
+.logo span{
+	position: absolute;
+	background-color: rgb(43,147,209) !important;
+	color: white;
+	display: block;
+	font-size: 40px;
+	text-align: center;
+	width: 100%;
+}
