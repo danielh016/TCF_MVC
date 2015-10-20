@@ -33,13 +33,38 @@
 		<table class="table table-condensed">
 			<thead>
 				<th>權限</th>
-				<th>類型</th>
-				<th>驗證狀態</th>
+				<th>註冊來自</th>
 			</thead>
 			<tr>
-				<td><?=$user->rid?></td>
+				<?php
+					$rid = $user->rid;
+					$utid = $user->utid;
+					$activate = $user->activate;
+					
+					if($rid==2&&$utid==1){
+						echo '<td>一般會員</td><td>TC Incubator</td>';
+					}
+					else if($rid==2&&$utid==2){
+						echo '<td>一般會員</td><td>Facebook</td>';
+					}
+					else if($rid==3&&$utid==1){
+						echo '<td>VIP會員</td><td>TC Incubator</td>';
+					}
+					else if($rid==3&&$utid==2){
+						echo '<td>VIP會員</td><td>Facebook</td>';
+					}
+					else if($rid==4&&$utid==1){
+						echo '<td>管理員</td><td>TC Incubator</td>';
+					}
+					else if($rid==4&&$utid==2){
+						echo '<td>管理員</td><td>Facebook</td>';
+					}
+				?>
+
+
+				<!--<td><?=$user->rid?></td>
 				<td><?=$user->utid?></td>
-				<td><?=$user->activate?></td>
+				<td><?=$user->activate?></td>-->
 			</tr>
 		</table>
 	</div>

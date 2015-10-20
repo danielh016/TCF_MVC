@@ -47,6 +47,7 @@ class Report extends CI_Controller {
         $data = array(
             'rpid' => null,
             'aid' => $aid,
+            'uid' => $_SESSION['uid'],
             'reason' => $this->input->post('report_reason'),
             'content' => $this->input->post('report_content')
         );

@@ -33,9 +33,7 @@ class Topic extends CI_Controller {
         $mode = strtolower((String)$mode);
         $limit = (int)$limit;
 
-        if( ! $data = $this->Topic_model->getTopics($mode, $limit) ){
-            show_error('提取文章清單'.'時發生錯誤<br>'.$this->db->error());
-        }
+        $data = $this->Topic_model->getTopics($mode, $limit);
 
     	$output = array('topics' => $data);
     	$this->load->view('topic/topic_list.php', $output);
@@ -48,17 +46,21 @@ class Topic extends CI_Controller {
         $output = array('tags' => $this->Topic_model->getTags());
         $this->load->view('template/head.php', $output);
 
-        if( $keys == null ){
-            $keys = $this->input->post('keyword');
+        if( ! $keys = $this->input->post('q') ){
+            $keys = $this->input->get('q');
+            $encoding = $this->input->get('encoding');
+
+            if( isset($encoding) ){
+                if( $encoding == 'b64' ){
+                    $keys = base64_decode($keys);
+                }
+            }
         }
+        $keys = explode(' ',$keys);
         $mode = strtolower((String)$mode);
-        $keys = explode('-',$keys);
         $limit = (int)$limit;
 
         $data = $this->Topic_model->getSpecifiedTopics($mode, $keys, $limit);
-        if( count($data) == 0 ){
-            show_error('搜尋不到文章<br>或搜尋'.'時發生錯誤<br>');
-        }
 
         $output = array('topics' => $data);
         $this->load->view('topic/topic_list.php', $output);
@@ -88,7 +90,7 @@ class Topic extends CI_Controller {
         }
 
         $this->Auth_model->getAuthStat();        
-        $output = array('tags' => $this->Topic_model->getTags());
+        $output = array('tags' => $this->Topic_model->getTags(), 'topicname'=>$topicname);
         $this->load->view('template/head.php', $output);
 
         $i = 0;

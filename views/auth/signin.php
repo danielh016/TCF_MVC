@@ -8,7 +8,7 @@
         	<form action="<?=base_url().'Auth/typical'?>" method="post" id="signin">
             	<div class="form-group">
             	    <label for="signin_email">電子信箱</label>
-            	    <input id="signin_email" name="signin_email" type="email" class="form-control" placeholder="simpson@neihu.mail" required>
+            	    <input id="signin_email" name="signin_email" type="email" class="form-control" placeholder="sample@gmail.com" required>
             	</div>
             	<div class="form-group">
             	    <label for="signin_password">密碼</label>
@@ -30,13 +30,13 @@
         	<div class="form-group">
                 <label for="signup_username" class="col-sm-2 control-label">姓名</label>
                 <div class="col-sm-10">
-                	<input id="signup_username" name="signup_username" type="text" class="form-control" placeholder="荷馬辛普森" required>
+                	<input id="signup_username" name="signup_username" type="text" class="form-control" placeholder="TCer" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="signup_email" class="col-sm-2 control-label">電子信箱</label>
                 <div class="col-sm-10">
-                	<input id="signup_email" name="signup_email" type="email" class="form-control" placeholder="simpson@neihu.mail" required>
+                	<input id="signup_email" name="signup_email" type="email" class="form-control" placeholder="sample@gmail.com" required>
                 </div>
             </div>
             <div class="form-group">

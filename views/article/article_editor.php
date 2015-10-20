@@ -17,7 +17,7 @@
             <label for="article_tag" class="col-sm-2 control-label">分類</label>
             <div class="col-sm-10">
                 <!--<input class="form-control" type="text" id="article_tag" placeholder="分類" value="<?php if(isset($tag)) echo $tag; ?>">-->
-                <select id="article_tag">
+                <select id="article_tag">   <!--創業/學習/趨勢/策略/管理/資源/設計/教育/介紹/品牌/故事/Code/工程師/商業模式/創業家精神/行銷-->
                     <option value="創業">創業</option>
                     <option value="策略">策略</option>
                     <option value="設計">設計</option>
@@ -25,6 +25,15 @@
                     <option value="學習">學習</option>
                     <option value="教育">教育</option>
                     <option value="趨勢">趨勢</option>
+                    <option value="資源">資源</option>
+                    <option value="介紹">介紹</option>
+                    <option value="品牌">品牌</option>
+                    <option value="故事">故事</option>
+                    <option value="code">Code</option>
+                    <option value="工程師">工程師</option>
+                    <option value="商業模式">商業模式</option>
+                    <option value="創業家精神">創業家精神</option>
+                    <option value="行銷">行銷</option>
                     <option value="其他">其他</option>
                 </select>
             </div>
@@ -50,9 +59,10 @@
 
 
         <div class="col-md-10 col-xs-10 admin_bar <?php if((int)$_SESSION['rid']!=4) echo('sr-only'); ?> ">
+            <div class="col-md-12 col-xs-12"><p class="bg-warning" style="padding:10px;">格式為：YYYY-MM-DD HH:MM:SS  格式不能錯!!</p></div>
             <label for="article_datepicker" class="col-sm-2 control-label">編輯時間</label>
             <div class="col-sm-3">
-                <input class="form-control input-sm" type="datetime" id="article_datepicker" placeholder="時間" value="<?php if(isset($edit_time)) echo $edit_time;?>">
+                <input class="form-control input-sm" type="datetime" id="article_datepicker" placeholder="ex: 2015-10-19 12:47:41" value="<?php if(isset($edit_time)) echo $edit_time;?>">
             </div>
 
             <label for="article_views" class="col-sm-2 control-label">瀏覽次數</label>

@@ -1,6 +1,6 @@
 <div class="col-md-12 col-xs-12 article_list">
 
-	<?php if(!count($topics)) echo('<h4>找不到符合條件的文章</h4>'); ?>
+	<?php if(count($topics)==0) echo('<h1>:(</h1><br><h4>找不到符合條件的文章</h4>'); ?>
 	<?php if(count($topics)) foreach ($topics as $row): ?>
 
 

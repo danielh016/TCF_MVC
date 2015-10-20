@@ -1,6 +1,6 @@
 				<div class="col-md-12 col-sm-12 col-xs-12">
 				    <div class="col-md-8 col-sm-8 col-xs-12">
-					    <div class="fb-page" data-href="https://www.facebook.com/TCincubator.page" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false">
+					    <div class="fb-page" data-href="https://www.facebook.com/TCincubator.page" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false" data-show-posts="false">
                             <div class="fb-xfbml-parse-ignore">
                                 <blockquote cite="https://www.facebook.com/TCincubator.page">
                                     <a href="https://www.facebook.com/TCincubator.page">TC Incubator 提攜 孵化</a>

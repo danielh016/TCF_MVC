@@ -157,7 +157,8 @@ class Article extends CI_Controller {
                                 $output[$key] = 'Allpost';
                                 break;
                             case 'edit_time':
-                                $output[$key] = date("Y-m-d h:i:s", time()+(12*60*60));
+                                date_default_timezone_set('Asia/Taipei');
+                                $output[$key] = date("Y-m-d h:i:s", time());
                                 break;
                             case 'views':
                                 $output[$key] = 0;

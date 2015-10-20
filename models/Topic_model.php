@@ -13,14 +13,14 @@ class Topic_model extends CI_Model
                 foreach ($data as $row) {
                     //特殊處理
                     if( $row->$key == FALSE ){
-                        $row->$key = 'http://i.imgur.com/CPKzVQp.png';
+                        $row->$key = '../../../user_image/default_article_image2.png';
                     }
                 }
             }
             else{
                 if( isset($data[0]) ){
                     if( $data[0]->$key == FALSE ){
-                        $data[0]->$key = 'http://i.imgur.com/CPKzVQp.png';
+                        $data[0]->$key = '../../../user_image/default_article_image2.png';
                     }
                 }
             }

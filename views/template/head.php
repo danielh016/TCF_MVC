@@ -2,7 +2,7 @@
 <HTML lang="en">
 
 <HEAD>
-    <TITLE>TC Incubator Forum</TITLE>
+    <TITLE><?php if(isset($topicname)) echo($topicname.' - ');?>TC Sharing 提攜分享</TITLE>
     <link href="http://tcincubator.com/lib/index.ico" rel="SHORTCUT ICON">
 
     <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
@@ -16,6 +16,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="提攜分享，正在分享你的新觀點">
+    <meta property="og:title" content="<?php if(isset($topicname)) echo($topicname);?>" />
+    <meta property="og:site_name" content="TC Sharing 提攜分享"/>
+    <meta property="og:url" content="<?='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>" />
+    <meta property="fb:app_id" content="1659205097631179" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="zh_TW" />
 
     <script>
         window.fbAsyncInit = function() {
@@ -94,6 +100,7 @@
         vertical-align: middle;
     }
 
+
     .carousel-control.right, .carousel-control.left {
         background-image: none;
     }
@@ -128,7 +135,6 @@
         background-repeat:no-repeat;
         background-position: 50% 50%; 
         height: 100%;
-        filter: blur(1px);
         z-index: -1;
     }
     /*global*/
@@ -389,24 +395,22 @@
                                     <h1>TC</h1>
                                     <h1>Incubator</h1>
                                     -->
-                                    <img src="<?='http://'.$_SERVER['HTTP_HOST']?>/user_image/TC_logo.png" alt="" class="logo-img">
+                                    <img src="<?='http://'.$_SERVER['HTTP_HOST']?>/user_image/TC_slogo.png" alt="" class="logo-img">
                                 </a>
                             </li>
-                            <li class="pull-left">
-                                <a href="#_"><h6>beta</h6></a>
-                            </li>
+                            
                             <li class="pull-left">
                                 <a href="#" class="category_switch"><h5><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> 分類討論<span class="caret"></span></h5></a>
                             </li>
                             <li class="pull-left hidden-xs">
                                 <?php if( $_SESSION['authstat'] == TRUE ){
-                                        echo('<a href="'.base_url().'Topics/tag/newhand'.'" class=""><h5>#新手報到</h5></a>');
+                                        echo('<a href="'.base_url().'Topics/tag/?q=newhand'.'" class=""><h5>#新手報到</h5></a>');
                                     }
                                 ?>
                             </li>
                             <li class="pull-left hidden-xs">
                                 <?php if( $_SESSION['authstat'] == TRUE ){
-                                        echo('<a href="'.base_url().'Topics/tag/bugreport'.'" class=""><h5>#Bug回報</h5></a>');
+                                        echo('<a href="'.base_url().'Topics/tag/?q=bugreport'.'" class=""><h5>#Bug回報</h5></a>');
                                     }
                                 ?>
                             </li>
@@ -458,7 +462,7 @@
                 <div class="col-md-12 col-xs-12 none_padding category_tag_bar">
                     <div class="col-md-3 col-xs-12 none_padding pull-left search_bar input-group input-group-sm">
                         <form id="search-form">
-                            <input type="text" name="keyword" class="form-control search_input" placeholder="搜尋文章...">
+                            <input type="text" name="q" class="form-control search_input" placeholder="搜尋文章...">
                         </form>
                         <div class="btn-group btn-group-sm" role="group" aria-label="...">
                             <button type="submit" form="search-form" formaction="<?=base_url().'Topics/topicname/'?>" formmethod="post" class="btn btn-default search_button">自標題</button>
@@ -467,7 +471,7 @@
                         </div>
                     </div>
                     <?php foreach($tags as $row): ?>
-                        <span class="category_tag"><a href="<?=(base_url().'Topics/tag/'.str_replace(' ', '-', $row->tag))?>"><?=$row->tag?></a></span>
+                        <span class="category_tag"><a href="<?=(base_url().'Topics/tag/?encoding=b64&q='.base64_encode(str_replace(' ', '-', $row->tag)))?>"><?=$row->tag?></a></span>
                     <?php endforeach;?>
                 </div>
             </div>

@@ -44,7 +44,7 @@
                 ?>
                     <img src="../../user_image/TC_defaultuser.png" alt="" class="user-img img-rounded">
                 <?php  }
-                    else if($check_photo!=NULL){
+                    else if($check_photo!=NULL){ 
                 ?>
                     <img src="<?=$row->user_photo_addr?>" alt="" class="user-img img-rounded">
                 <?php
@@ -104,7 +104,7 @@
                 </div>
             </div><!-- article_bar_info -->
             <div class="col-md-11 col-xs-11 article_bar_content">
-                <?=$row->content?>
+                <?=$row->content?><br><p style="color:gray ; font-size:10pt">TC Sharing部分文章由會員上刊，如有不適當或對於文章出處有疑慮，請檢舉或Email告知我們，我們將在最短時間內進行撤除</p>
             </div><!-- article_bar_content -->
         <?php } //若為匿名(條件結束)?>
         
