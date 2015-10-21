@@ -261,6 +261,12 @@
         border: 1px gray dotted;
         transform: perspective( 600px ) rotateY( 180deg );
     }
+    .search-nav {
+        padding: 5px;
+        border: 1px rgb(43, 147, 209) solid;
+        border-radius: 10px;
+        color: rgb(43, 147, 209);
+    }
     div.articles * {
         position: relative;
     }
@@ -402,6 +408,9 @@
                             <li class="pull-left">
                                 <a href="#" class="category_switch"><h5><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> 分類討論<span class="caret"></span></h5></a>
                             </li>
+                            <li class="pull-left">
+                                <?php echo ('<a href="'.base_url().'Topics"><h5>#所有文章</h5></a>');?>
+                            </li>
                             <li class="pull-left hidden-xs">
                                 <?php if( $_SESSION['authstat'] == TRUE ){
                                         echo('<a href="'.base_url().'Topics/tag/?q=newhand'.'" class=""><h5>#新手報到</h5></a>');
@@ -459,7 +468,7 @@
                 </div>
             </nav>
             <div class="col-md-12 col-xs-12 category_bar">
-                <div class="col-md-12 col-xs-12 none_padding category_tag_bar">
+                <div class="col-md-12 col-xs-12 none_padding category_tag_bar overflow-wrap">
                     <div class="col-md-3 col-xs-12 none_padding pull-left search_bar input-group input-group-sm">
                         <form id="search-form">
                             <input type="text" name="q" class="form-control search_input" placeholder="搜尋文章...">
@@ -470,8 +479,10 @@
                             <button type="submit" form="search-form" formaction="<?=base_url().'Topics/username/'?>" formmethod="post" class="btn btn-default search_button">自原PO</button>
                         </div>
                     </div>
+                    <span class="category_tag category_hot overflow-wrap"><a href="<?=(base_url().'Topics/hot')?>"><i class="fa fa-fire"></i>熱門文章</a></span>
+                    <span class="category_tag category_latest overflow-wrap"><a href="<?=(base_url().'Topics/latest')?>"><i class="fa fa-clock-o"></i>最新文章</a></span>
                     <?php foreach($tags as $row): ?>
-                        <span class="category_tag"><a href="<?=(base_url().'Topics/tag/?encoding=b64&q='.base64_encode(str_replace(' ', '-', $row->tag)))?>"><?=$row->tag?></a></span>
+                        <span class="category_tag overflow-wrap"><a href="<?=(base_url().'Topics/tag/0/10?encoding=b64&q='.base64_encode(str_replace(' ', '-', $row->tag)))?>"><?=$row->tag?></a></span>
                     <?php endforeach;?>
                 </div>
             </div>

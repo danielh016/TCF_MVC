@@ -24,45 +24,75 @@ class Topic extends CI_Controller {
 
 
 
-    public function getTopics($mode = 'hot', $limit = 10)
+    public function getTopics($mode = 'latest', $index = 0, $limit = 10)
     {
         $this->Auth_model->getAuthStat();        
         $output = array('tags' => $this->Topic_model->getTags());
         $this->load->view('template/head.php', $output);
 
         $mode = strtolower((String)$mode);
+        $index = (int)$index;
         $limit = (int)$limit;
 
-        $data = $this->Topic_model->getTopics($mode, $limit);
+        if( $index < 0 ){
+            $index = 0;
+        }
+        if( $limit <=0 ){
+            $limit = 10;
+        }
 
-    	$output = array('topics' => $data);
+        $data = $this->Topic_model->getTopics($mode, $index, $limit);
+
+    	$output = array
+        (
+            'topics' => $data,
+            'mode' => $mode,
+            'limit' => $limit,
+            'index' => $index
+        );
     	$this->load->view('topic/topic_list.php', $output);
     	$this->load->view('template/footer.php');
     }
 
-    public function getSpecifiedTopics($mode = 'tag', $keys = null, $limit = 10)
+    public function getSpecifiedTopics($mode = 'tag', $index = 0, $limit = 10, $keys = null)
     {
         $this->Auth_model->getAuthStat();        
         $output = array('tags' => $this->Topic_model->getTags());
         $this->load->view('template/head.php', $output);
 
-        if( ! $keys = $this->input->post('q') ){
-            $keys = $this->input->get('q');
+        if( ! $keys_a = $this->input->post('q') ){
+            $keys_a = $this->input->get('q');
             $encoding = $this->input->get('encoding');
 
             if( isset($encoding) ){
                 if( $encoding == 'b64' ){
-                    $keys = base64_decode($keys);
+                    $keys_a = base64_decode($keys_a);
                 }
             }
         }
-        $keys = explode(' ',$keys);
+
+        $keys_b = explode(' ',$keys_a);
         $mode = strtolower((String)$mode);
+        $index = (int)$index;
         $limit = (int)$limit;
 
-        $data = $this->Topic_model->getSpecifiedTopics($mode, $keys, $limit);
+        if( $index < 0 ){
+            $index = 0;
+        }
+        if( $limit <=0 ){
+            $limit = 10;
+        }
 
-        $output = array('topics' => $data);
+        $data = $this->Topic_model->getSpecifiedTopics($mode, $limit, $index, $keys_b);
+
+        $output = array
+        (
+            'topics' => $data,
+            'mode' => $mode,
+            'limit' => $limit,
+            'index' => $index,
+            'keys' => $keys_a
+        );
         $this->load->view('topic/topic_list.php', $output);
         $this->load->view('template/footer.php');
     }

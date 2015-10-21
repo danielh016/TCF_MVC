@@ -34,7 +34,7 @@
                     <form action="<?=base_url().'Auth/typical'?>" method="post" id="signin">
                         <div class="form-group">
                             <label for="signin_email">電子信箱</label>
-                            <input id="signin_email" name="signin_email" type="email" class="form-control" placeholder="simpson@neihu.mail" required>
+                            <input id="signin_email" name="signin_email" type="email" class="form-control" placeholder="sample@gmail.com" required>
                         </div>
                         <div class="form-group">
                             <label for="signin_password">密碼</label>

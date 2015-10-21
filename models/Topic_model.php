@@ -13,14 +13,14 @@ class Topic_model extends CI_Model
                 foreach ($data as $row) {
                     //特殊處理
                     if( $row->$key == FALSE ){
-                        $row->$key = '../../../user_image/default_article_image2.png';
+                        $row->$key = 'http://'.$_SERVER['HTTP_HOST'].'/user_image/default_article_image2.png';
                     }
                 }
             }
             else{
                 if( isset($data[0]) ){
                     if( $data[0]->$key == FALSE ){
-                        $data[0]->$key = '../../../user_image/default_article_image2.png';
+                        $data[0]->$key = 'http://'.$_SERVER['HTTP_HOST'].'/user_image/default_article_image2.png';
                     }
                 }
             }
@@ -46,34 +46,31 @@ class Topic_model extends CI_Model
             $output = $this->getDefaultPhoto($output, 'topic_', FALSE);
             return $output;
         }
-        public function getTopics($mode, $limit)
+        public function getTopics($mode, $index, $limit)
         {
             switch($mode)
             {
                 case 'latest':
-                    $sql = 'SELECT * FROM topics ORDER BY edit_time DESC LIMIT ?';
+                    $sql = 'SELECT * FROM topics ORDER BY edit_time DESC LIMIT ?,? ';
+                    $result = $this->db->query($sql, array($index, $limit));
                     break;
-                default:
                 case 'hot':
-                    $sql = 'SELECT *,views+10*num_articles AS hotindex FROM topics ORDER BY hotindex DESC LIMIT ?';
+                    $sql = 'SELECT *,views+10*num_articles AS hotindex FROM topics ORDER BY hotindex DESC LIMIT ?,? ';
+                    $result = $this->db->query($sql, array($index, $limit));
                     break;
             }
-            $result = $this->db->query($sql, $limit);
             $output = $result->result();
             $output = $this->getDefaultPhoto($output, 'topic_', FALSE);
             return $output;
         }
-        public function getSpecifiedTopics($mode, $keys, $limit)
+        public function getSpecifiedTopics($mode, $index, $limit, $keys)
         {
             foreach( $keys as $key )
             {
                 $this->db->or_like($mode, $key, 'both');
             }
-            $this->db->limit($limit);
+            $result = $this->db->limit($index, $limit)->get('topics');
 
-
-            $sql = $this->db->get_compiled_select('topics');
-            $result = $this->db->query($sql, $limit);
             $output = $result->result();
             $output = $this->getDefaultPhoto($output, 'topic_', FALSE);
             return $output;

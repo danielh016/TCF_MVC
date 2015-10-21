@@ -36,8 +36,8 @@ class Index extends CI_Controller {
 
 		$data = array
 		(
-			'hot' => $this->Topic_model->getTopics('hot', 7),
-			'latest' => $this->Topic_model->getTopics('latest', 7)
+			'hot' => $this->Topic_model->getTopics('hot', 0, 7),
+			'latest' => $this->Topic_model->getTopics('latest', 0, 7)
 		);
 		$this->load->view('index_topics.php', $data);
 
