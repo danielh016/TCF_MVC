@@ -31,6 +31,9 @@
                     <h4 class="modal-title">現在就登入TC Incubator跟我們一起討論吧！</h4>
                 </div>
                 <div class="modal-body">
+                    <?=$_SESSION['fb_login_button']?><br>
+                    <h4>或者</h4>
+                    <hr>
                     <form action="<?=base_url().'Auth/typical'?>" method="post" id="signin">
                         <div class="form-group">
                             <label for="signin_email">電子信箱</label>
@@ -42,9 +45,6 @@
                         </div>
                         <input type="submit" class="btn btn-success btn-block" value="登入">
                     </form>
-                    <hr>
-                    <h4>或者</h4>
-                    <?=$_SESSION['fb_login_button']?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

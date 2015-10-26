@@ -4,7 +4,9 @@
         </div>
         <div class="col-md-8">
         	<h1>現在就登入</h1>
-        	<hr>
+            <hr>
+            <?=$_SESSION['fb_login_button']?><br>
+            <h4>或者</h4>
         	<form action="<?=base_url().'Auth/typical'?>" method="post" id="signin">
             	<div class="form-group">
             	    <label for="signin_email">電子信箱</label>
@@ -17,8 +19,6 @@
 				<input type="submit"  class="btn btn-success btn-block" value="登入">
         	</form>
             <hr>
-            <h4>或者</h4>
-            <?=$_SESSION['fb_login_button']?>
         </div>
         <div class="col-md-3">
         </div>

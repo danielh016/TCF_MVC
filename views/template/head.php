@@ -14,7 +14,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="viewport"content="width=600"/> 
     <meta name="description" content="提攜分享，正在分享你的新觀點">
     <meta property="og:title" content="<?php if(isset($topicname)) echo($topicname);?>" />
     <meta property="og:site_name" content="TC Sharing 提攜分享"/>
@@ -22,6 +23,7 @@
     <meta property="fb:app_id" content="1659205097631179" />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="zh_TW" />
+    <meta property="og:image" content="http://sharing.tcincubator.com/user_image/TC-smlogo.jpg"/>
 
     <script>
         window.fbAsyncInit = function() {
@@ -230,7 +232,7 @@
         border-radius: 5px;
         color: gray;
         margin-bottom: 20px;
-        min-height: 18px;
+        min-height: 36px;
         overflow: hidden;
     }
     .topics_item h1,
@@ -259,6 +261,9 @@
     }
     .topics_photo_back{
         border: 1px gray dotted;
+        transform: perspective( 600px ) rotateY( 180deg );
+    }
+    .topics_photo_back>img{
         transform: perspective( 600px ) rotateY( 180deg );
     }
     .search-nav {
