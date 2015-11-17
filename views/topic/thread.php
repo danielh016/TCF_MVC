@@ -71,9 +71,6 @@
                 <?=$row->edit_time?><span>　　</span>#<?=$i?>
             </div>
         </div><!-- article_bar_info -->
-        <div class="col-md-11 col-xs-11 article_bar_content">
-            <?=$row->content?>
-        </div><!-- article_bar_content -->
 
         <?php   } //若不是匿名(條件結束)
                 else if ($ano==1){  //若為匿名(條件開始)
@@ -103,11 +100,13 @@
                     <?=$row->edit_time?><span>　　</span>#<?=$i?>
                 </div>
             </div><!-- article_bar_info -->
-            <div class="col-md-11 col-xs-11 article_bar_content">
-                <?=$row->content?><br><p style="color:gray ; font-size:10pt">TC Sharing部分文章由會員上刊，如有不適當或對於文章出處有疑慮，請檢舉或Email告知我們，我們將在最短時間內進行撤除</p>
-            </div><!-- article_bar_content -->
         <?php } //若為匿名(條件結束)?>
-        
+            <div class="col-md-11 col-xs-11 article_bar_content">
+                <?=$row->content?><br>
+
+                <br>
+                <p style="color:gray ; font-size:10pt">TC Sharing部分文章由會員上刊，如有不適當或對於文章出處有疑慮，請以文章檢舉或Email告知我們，我們將在最短時間內進行撤除</p>
+            </div><!-- article_bar_content -->
 
         <?php endforeach; //大for迴圈結束?>
     </div><!-- article_bar -->
