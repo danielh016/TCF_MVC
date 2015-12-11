@@ -17,7 +17,16 @@
                     </div>
 				</div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- TC的廣告 -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-1566520964413832"
+                         data-ad-slot="5668297306"
+                         data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                 </div>
 			</div><!-- row -->
         </div><!-- col-xs-12 col-sm-10 col-md-8 col-lg-8 -->
